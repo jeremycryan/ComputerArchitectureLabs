@@ -66,3 +66,9 @@ Input A | Input B | Expected Sum | CO | OF | Observed Sum | CO | OF | Rationale
 Here's a GIF of our programmed FPGA! It's a little hard to see the lights, but the board is behaving as expected.
 
 <img src="https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab0/FPGA.gif?raw=true" width="500"/>
+
+### Summary Statistic
+
+Here's the summary statistic output from Vivado for our project.
+
+![GTKWave Output](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab0/FPGA_report.png?raw=true)
