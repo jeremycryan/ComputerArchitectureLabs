@@ -16,7 +16,7 @@ module testAdder4Bit ();
     
     initial begin
         $display(" A3 A2 A1 A0 | B3 B2 B1 B0 | S3 S2 S1 S0 | Co Ov ");
-
+        // Exhaustive test cases
 //        for (i=0; i<16; i=i+1) begin
             
 //           a[0] = i%2;
@@ -36,6 +36,7 @@ module testAdder4Bit ();
 
  //           end
  //       end
+ //       specific test cases
         a = 4'b0010;b = 4'b0100; #1000;
         $display("  %b  %b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b |  %b  %b", a[3], a[2], a[1], a[0], b[3], b[2], b[1], b[0], sum[3], sum[2], sum[1], sum[0], carryout, overflow);
         $display("                   Expected:  0  1  1  0 |  0  0");

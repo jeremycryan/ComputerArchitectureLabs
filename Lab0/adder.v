@@ -23,10 +23,11 @@ module adder_onebit
     input carryin
 );
     // Your adder code here
-   wire abXOR;
-   wire abAND;
-   wire cAND;
+   wire abXOR; // output of xor with a,b as inputs
+   wire abAND; // output of and with a,b as inputs
+   wire cAND;  // output of and with abXOR, carryin as inputs
    
+   // Define gates
    `XOR inputXOR(abXOR, a, b);
    `AND inputAND(abAND, a, b);
    `AND carryAND(cAND, abXOR, carryin);
