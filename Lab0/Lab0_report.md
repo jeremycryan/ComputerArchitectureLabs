@@ -4,6 +4,16 @@
 
 ![Our GTKwave output.](https://raw.githubusercontent.com/jeremycryan/ComputerArchitectureLabs/master/Lab0/LAB0_wave.JPG)
 
+__**Test Case Explanation**__
+
+With our selected simulated test cases, we have three catagories that our tests fall in. First, we tested basic sums. Second we tested carryout cases. Third we tested overflow cases. We tried to have our carryout cases and overflow cases have both overlapping and non overlapping tests so we can verify that overflow detection works regardless if there is a carryout.
+
+We also did an exhaustive test of all possible inputs but only specifically looked at a handful in closer detail for the catagories previously described.
+
+__**Test Failures and Fixes**__
+
+We did not have any specific test case failures. However, we did at first displayed the bits with the LSB on the left and the MSB on the right, which was quickly fixed but did not affect the output.
+
 Input A | Input B | Expected Sum | CO | OF | Observed Sum | CO | OF | Rationale
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 0001 | 1001 | 1010 | 0 | 0 | 1010 | 0 | 0 | Basic sum
