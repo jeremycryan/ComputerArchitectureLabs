@@ -1,0 +1,22 @@
+Complete AND    10min
+Complete NAND   10min
+Complete NOR    10min
+Complete OR     10min
+Complete XOR    10min
+All of Above done by end of Monday
+
+Complete ADD    20min
+complete SUB    20min
+Complete SLT    20min
+All of Above done by end of Tuesday
+
+Integrate       30min
+
+Write Testbench 40min
+Complete Tests  20min
+Report          90min
+All of Above done by end of Wednesday
+
+Thursday tie up loose ends. - 20 min
+
+total:          290min = 4hr 50min
