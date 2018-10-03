@@ -17,7 +17,7 @@ module mux2
     `NOT muxNOT(selnot, sel);
     `AND muxAND1(mux1, selnot, in0);
     `AND muxAND2(mux2, sel, in1);
-    `OR muxOR(carryout, mux1, mux2);
+    `OR muxOR(out, mux1, mux2);
 endmodule
 
 // 8 bit mux
