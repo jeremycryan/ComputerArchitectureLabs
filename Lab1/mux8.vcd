@@ -1,0 +1,167 @@
+$date
+	Wed Oct  3 14:35:59 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testFullAdder $end
+$var wire 1 ! out $end
+$var reg 8 " ins [7:0] $end
+$var reg 3 # sel [2:0] $end
+$scope module test_mux $end
+$var wire 8 $ ins [7:0] $end
+$var wire 1 % ns0 $end
+$var wire 1 & ns0ns1 $end
+$var wire 1 ' ns0s1 $end
+$var wire 1 ( ns1 $end
+$var wire 1 ) ns2 $end
+$var wire 1 * o0o1 $end
+$var wire 1 + o0o1o2o3 $end
+$var wire 1 , o2o3 $end
+$var wire 1 - o4o5 $end
+$var wire 1 . o4o5o6o7 $end
+$var wire 1 / o6o7 $end
+$var wire 1 ! out $end
+$var wire 1 0 out0 $end
+$var wire 1 1 out1 $end
+$var wire 1 2 out2 $end
+$var wire 1 3 out3 $end
+$var wire 1 4 out4 $end
+$var wire 1 5 out5 $end
+$var wire 1 6 out6 $end
+$var wire 1 7 out7 $end
+$var wire 1 8 s0ns1 $end
+$var wire 1 9 s0s1 $end
+$var wire 3 : sel [2:0] $end
+$var wire 8 ; selpick [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx ;
+b10 :
+x9
+x8
+x7
+x6
+x5
+x4
+x3
+x2
+x1
+x0
+x/
+x.
+x-
+x,
+x+
+x*
+x)
+x(
+x'
+x&
+x%
+b100 $
+b10 #
+b100 "
+x!
+$end
+#10000
+1%
+0(
+1)
+#20000
+09
+08
+b0xxxx ;
+00
+01
+03
+04
+05
+06
+07
+#30000
+1'
+0&
+#40000
+b0x0x ;
+0*
+0-
+0/
+#50000
+b100 ;
+#60000
+0.
+#70000
+12
+#90000
+1,
+#110000
+1+
+#130000
+1!
+#1000000
+b11 #
+b11 :
+#1010000
+0%
+#1020000
+19
+#1030000
+0'
+#1040000
+b1100 ;
+#1050000
+b1000 ;
+#1070000
+02
+#1090000
+0,
+#1110000
+0+
+#1130000
+0!
+#2000000
+b111 #
+b111 :
+b11111111 "
+b11111111 $
+#2010000
+0)
+#2020000
+b10001000 ;
+13
+#2030000
+b10000000 ;
+#2040000
+17
+1,
+#2050000
+03
+#2060000
+1/
+1+
+#2070000
+0,
+#2080000
+1.
+1!
+#2090000
+0+
+#3000000
+b1111111 "
+b1111111 $
+#3020000
+07
+#3040000
+0/
+#3060000
+0.
+#3080000
+0!
+#4000000
