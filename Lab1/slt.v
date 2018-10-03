@@ -6,7 +6,7 @@
 
 `include "mux.v"
 
-module SLTControl(
+module SLTControl( // Alters control signal if slt is selected
     input[2:0] sel,
     output[2:0] new_sel,
     output is_slt
@@ -28,4 +28,29 @@ module SLTControl(
     `AND and3 (new_sel[1], nslt, sel[1]);
     `AND and4 (new_sel[2], nslt, sel[2]);
 
+endmodule
+
+module SLTinator(  // turns outputs from non-slt alu into slt output if is_slt is true
+    input[31:0] ins,
+    input is_slt,
+    output[31:0] outs,
+);
+    wire nis_slt;
+
+    `NOT nis(nis_slt, is_slt);
+
+    genvar i;
+    generate
+        for(i=0; i<32; i=i+1)
+        begin:genblock
+           if(i==0) // Special case for bit 0
+           begin
+                mux2 mux(outs[0], ins[0], ins[31], is_slt);
+           end
+           else
+           begin
+                `AND sltSel(outs[i],ins[i],nis_slt);
+           end
+        end
+    endgenerate
 endmodule

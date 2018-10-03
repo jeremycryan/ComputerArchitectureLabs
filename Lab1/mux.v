@@ -6,7 +6,8 @@
 module mux2
 (
     output out,
-    input[1:0] ins,
+    input in0,
+    input in1,
     input sel
 );
 
@@ -14,10 +15,9 @@ module mux2
     wire selnot;
 
     `NOT muxNOT(selnot, sel);
-    `AND muxAND1(mux1, selnot, ins[0]);
-    `AND muxAND2(mux2, sel, ins[1]);
+    `AND muxAND1(mux1, selnot, in0);
+    `AND muxAND2(mux2, sel, in1);
     `OR muxOR(carryout, mux1, mux2);
-
 endmodule
 
 // 8 bit mux
