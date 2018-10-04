@@ -1,5 +1,5 @@
 `include "sub.v"
-`include "mux.v"
+`include "slt.v"
 
 `define AND and #20
 `define XOR xor #20
@@ -23,24 +23,18 @@ module ALUOneBit
     wire[7:0] results;
     wire addCarryOut, subCarryOut;
 
-    assign results[3] = 1'b0;
+    assign results[2] = 1'b0;
     AdderOneBit adder(results[0],addCarryOut,a,b,carryin);
     SubtractorOneBit sub(results[1], subCarryOut,a,b,carryin);
     `AND andGate(results[4], a,b);
-    `XOR xorGate(results[2], a,b);
+    `XOR xorGate(results[3], a,b);
     `OR orGate(results[7], a,b);
     `NOR norGate(results[6],a,b);
     `NAND nandGate(results[5],a,b);
 
-    mux8 mux(out, results,control);
+    mux8 mux(out, results,control); // 8-bit mux for function control
 
-    wire mux1, mux2;
-    wire controlnot;
-
-    `NOT muxNOT(controlnot, control[0]);
-    `AND muxAND1(mux1, controlnot, addCarryOut);
-    `AND muxAND2(mux2, control[0], subCarryOut);
-    `OR muxOR(carryout, mux1, mux2);
+    mux2 mux2(carryout, addCarryOut, subCarryOut, control[0]); // 2-bit mux for carryout
 
 endmodule
 
@@ -54,25 +48,35 @@ module ALU32Bit(
     input[31:0] b,
     input[2:0] control
 );
-
+    wire[31:0] tempOut;
+    wire[2:0] newControl;
+    wire is_slt;
     wire[31:0] carryouts;
     wire carryin;
 
-    assign carryin = control[0];
+    SLTControl sltcontrol(control, newControl, is_slt);
+
+    assign carryin = newControl[0];
    
-    // strings 32 one bit alu's together
+    // strings 32 non-slt one bit alu's together
     genvar i;
     generate
         for(i=0;i<32; i=i+1)
         begin:genblock
             if(i==0)
             begin
-                ALUOneBit alu(out[i],a[i],b[i],carryin,control);
+                ALUOneBit alu(tempOut[i],carryouts[i],a[i],b[i],carryin,newControl);
             end
             else
             begin
-                ALUOneBit alu(out[i],a[i],b[i],carryouts[i-1],control);
+                ALUOneBit alu(tempOut[i],carryouts[i],a[i],b[i],carryouts[i-1],newControl);
             end
         end
     endgenerate
+    
+    assign carryout = carryouts[31];
+
+    // Converts non-slt outs to slt outs if is_slt is true
+    // else just forwards signal
+    SLTinator sltinator(tempOut,is_slt,out);
 endmodule

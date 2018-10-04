@@ -11,8 +11,6 @@ module testFullAdder();
     mux8 test_mux (out, ins, sel);
 
     initial begin
-        $dumpfile("mux8.vcd");
-        $dumpvars();
         $display("   INPUT | SEL | OUT");
         
         //integer error = 0;
@@ -40,7 +38,6 @@ module testFullAdder();
 	#1000;
         $display("%b | %b |   %b", ins, sel, out);
 
-        $finish();
 
     end
 endmodule

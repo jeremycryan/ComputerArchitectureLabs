@@ -33,7 +33,7 @@ endmodule
 module SLTinator(  // turns outputs from non-slt alu into slt output if is_slt is true
     input[31:0] ins,
     input is_slt,
-    output[31:0] outs,
+    output[31:0] outs
 );
     wire nis_slt;
 
