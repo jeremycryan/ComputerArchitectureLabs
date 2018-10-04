@@ -53,6 +53,8 @@ module ALU32Bit(
     wire is_slt;
     wire[31:0] carryouts;
     wire carryin;
+    wire display_co;
+    wire overflow_occur;
 
     SLTControl sltcontrol(control, newControl, is_slt);
 
@@ -74,7 +76,9 @@ module ALU32Bit(
         end
     endgenerate
     
-    assign carryout = carryouts[31];
+    `NOR nor1 (display_co, control[1], control[2]); // Only display carryout if in ADD or SUB mode
+    `AND and1 (carryout, display_co, carryouts[31]);
+
 
     // Converts non-slt outs to slt outs if is_slt is true
     // else just forwards signal
@@ -84,6 +88,7 @@ module ALU32Bit(
     out[14], out[15], out[16], out[17], out[18], out[19], out[20], out[21], out[22], out[23], out[24], out[25], out[26], out[27], out[28], out[29],
     out[30], out[31]); // Calculate whether all inputs are zeros.
 
-    `XOR overflows (overflow, carryouts[30], carryouts[31]); // Calculate overflow by comparing last carryout and last carryin
+    `XOR overflows (overflow_occur, carryouts[30], carryouts[31]); // Calculate overflow by comparing last carryout and last carryin
+    `AND show_overflow (overflow, display_co, overflow_occur);
 
 endmodule
