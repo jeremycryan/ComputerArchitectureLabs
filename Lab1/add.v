@@ -1,6 +1,6 @@
-`define AND and #50
+`define AND and #30
 `define XOR xor #50
-`define OR or #50
+`define OR or #30
 
 module AdderOneBit
 (

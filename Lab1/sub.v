@@ -2,7 +2,7 @@
 
 `include "add.v"
 
-`define NOT not #50
+`define NOT not #10
 
 module SubtractorOneBit(
     output diff,

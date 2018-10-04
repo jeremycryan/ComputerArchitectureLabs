@@ -1,7 +1,7 @@
 //  Extra modules for 
 
-`define AND and #20
-`define OR or #20
+`define AND and #30
+`define OR or #30
 `define NOT not #10
 
 `include "mux.v"
