@@ -108,6 +108,7 @@ Testing CarryOuts
  10000000000000000010000000000001 | 10000000000000000000000000000000 | 110 | 01111111111111111101111111111110 |  0  0  0 
  10000000000000000010000000000001 | 10000000000000000000000000000000 | 111 | 10000000000000000010000000000001 |  0  0  0 
 ```
+While testing our ALU with this testbench, we caught an error with our third test. Our ALU was not correctly changing overflow to 0 when the SLT function was enabled.
 
 ## Timing Analysis
 
