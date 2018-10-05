@@ -73,14 +73,16 @@ Lorem ipsum
 
 In addition to the propegation delays that each function causes, 190 delay is added by the 8 input multiplexer which controls which function's output is propagated, 110 is added from the SLTControl, and 70 is added by the SLTinator. These added delays are included in the following worst propegation dealys for each function.
 
-Add: 2370
-Subtract: 2380
-AND: 440
-OR: 440
-XOR: 450
-NOR: 430
-NAND: 430
-SLT: 2380
+Mode | Delay
+-----|-----
+Add | 2370
+Subtract | 2380
+SLT | 2380
+XOR | 450
+AND | 440
+NAND | 430
+NOR | 430
+OR | 440
 
 SLT uses the subtract function and contributes no additional delay, thus having the same propegation delay.
 
