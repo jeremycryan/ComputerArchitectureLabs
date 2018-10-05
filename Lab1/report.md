@@ -21,7 +21,7 @@ Select | Function
 We decided to implement our ALU by first creating a 1-bit module, with *almost* all of the functionality of a full 
 ALU. A block diagram is shown below.
 
-**!!!!!!!!!!!!!!!! 1-bit diagram !!!!!!!!!!!!!!!!!!!**
+!(1-bit ALU block diagram)[https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab1/alu_1bit.jpg?raw=true]
 
 It is worth noting that this 1-bit module **does not** calculate SLT -- if it receives a `select` input of 010, it always
 outputs false. This is because we implemented SLT at the 32-bit level using the *subtract* functionality.
@@ -32,7 +32,7 @@ These 1-bit ALUs link together as shown in the diagram below. Each has access to
 the `select` inputs S0, S1, and S2; and the carryout bit of the previous element. Only the *add* and *subtract* functions use
 the carryout bit.
 
-**!!!!!!!!!!!!!!!!!!Bits linking diagram!!!!!!!!!!!!!!!!**
+!(Multi-bit ALU block diagram)[https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab1/alu_1bit_string.jpg?raw=true]
 
 This 32-bit ALU additionally calculates the following outputs:
 
@@ -60,7 +60,7 @@ occurs.
 
 Our full, 32-bit ALU now looks as follows:
 
-**!!!!!!!!!!!!!!!Full 32 ALU!!!!!!!!!!!!!!!!!!!!**
+!(High-level ALU block diagram)[https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab1/alu32.jpg?raw=true]
 
 Note that there is some logic not shown that affects the carryout, overflow, and zero values based on the output of the SLT-inator
 (for instance, in SLT mode, carryout and overflow are always false).
