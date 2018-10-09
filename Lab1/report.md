@@ -21,7 +21,7 @@ Select | Function
 We decided to implement our ALU by first creating a 1-bit module, with *almost* all of the functionality of a full 
 ALU. A block diagram is shown below.
 
-**!!!!!!!!!!!!!!!! 1-bit diagram !!!!!!!!!!!!!!!!!!!**
+![1-bit ALU block diagram](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab1/alu_1bit.jpg?raw=true)
 
 It is worth noting that this 1-bit module **does not** calculate SLT -- if it receives a `select` input of 010, it always
 outputs false. This is because we implemented SLT at the 32-bit level using the *subtract* functionality.
@@ -32,7 +32,7 @@ These 1-bit ALUs link together as shown in the diagram below. Each has access to
 the `select` inputs S0, S1, and S2; and the carryout bit of the previous element. Only the *add* and *subtract* functions use
 the carryout bit.
 
-**!!!!!!!!!!!!!!!!!!Bits linking diagram!!!!!!!!!!!!!!!!**
+![Multi-bit ALU block diagram](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab1/alu_1bit_string.jpg?raw=true)
 
 This 32-bit ALU additionally calculates the following outputs:
 
@@ -60,18 +60,71 @@ occurs.
 
 Our full, 32-bit ALU now looks as follows:
 
-**!!!!!!!!!!!!!!!Full 32 ALU!!!!!!!!!!!!!!!!!!!!**
+![High-level ALU block diagram](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab1/alu32.jpg?raw=true)
 
 Note that there is some logic not shown that affects the carryout, overflow, and zero values based on the output of the SLT-inator
 (for instance, in SLT mode, carryout and overflow are always false).
 
 ## Test Results
 
-Lorem ipsum
+```
+ ---------------A---------------- | ---------------B---------------- | SEL | --------------OUT--------------- | CO ZR OF
+ Testing CarryOut of Subtraction without Overflows and Testing SLT with Positive Numbers
+ 00000000000000000010000000000001 | 00000000000000000000000000000001 | 000 | 00000000000000000010000000000010 |  0  0  0 
+ 00000000000000000010000000000001 | 00000000000000000000000000000001 | 001 | 00000000000000000010000000000000 |  1  0  0 
+ 00000000000000000010000000000001 | 00000000000000000000000000000001 | 010 | 00000000000000000000000000000000 |  0  1  0 
+ 00000000000000000010000000000001 | 00000000000000000000000000000001 | 011 | 00000000000000000010000000000000 |  0  0  0 
+ 00000000000000000010000000000001 | 00000000000000000000000000000001 | 100 | 00000000000000000000000000000001 |  0  0  0 
+ 00000000000000000010000000000001 | 00000000000000000000000000000001 | 101 | 11111111111111111111111111111110 |  0  0  0 
+ 00000000000000000010000000000001 | 00000000000000000000000000000001 | 110 | 11111111111111111101111111111110 |  0  0  0 
+ 00000000000000000010000000000001 | 00000000000000000000000000000001 | 111 | 00000000000000000010000000000001 |  0  0  0 
+------------------------------------------------------------------------------------------------------------------------
+Testing Overflows with Negative Numbers and Testing SLT with Negative Numbers
+ 10000000000000000000000000000000 | 10000000000000000000000000000001 | 000 | 00000000000000000000000000000001 |  1  0  1 
+ 10000000000000000000000000000000 | 10000000000000000000000000000001 | 001 | 11111111111111111111111111111111 |  0  0  0 
+ 10000000000000000000000000000000 | 10000000000000000000000000000001 | 010 | 00000000000000000000000000000001 |  0  0  0 
+ 10000000000000000000000000000000 | 10000000000000000000000000000001 | 011 | 00000000000000000000000000000001 |  0  0  0 
+ 10000000000000000000000000000000 | 10000000000000000000000000000001 | 100 | 10000000000000000000000000000000 |  0  0  0 
+ 10000000000000000000000000000000 | 10000000000000000000000000000001 | 101 | 01111111111111111111111111111111 |  0  0  0 
+ 10000000000000000000000000000000 | 10000000000000000000000000000001 | 110 | 01111111111111111111111111111110 |  0  0  0 
+ 10000000000000000000000000000000 | 10000000000000000000000000000001 | 111 | 10000000000000000000000000000001 |  0  0  0 
+------------------------------------------------------------------------------------------------------------------------
+Testing Overflow Panic Suppression of SLT
+ 00000000000000000010000000000001 | 10000000000000000000000000000001 | 000 | 10000000000000000010000000000010 |  0  0  0 
+ 00000000000000000010000000000001 | 10000000000000000000000000000001 | 001 | 10000000000000000010000000000000 |  0  0  1 
+ 00000000000000000010000000000001 | 10000000000000000000000000000001 | 010 | 00000000000000000000000000000000 |  0  1  0 
+ 00000000000000000010000000000001 | 10000000000000000000000000000001 | 011 | 10000000000000000010000000000000 |  0  0  0 
+ 00000000000000000010000000000001 | 10000000000000000000000000000001 | 100 | 00000000000000000000000000000001 |  0  0  0 
+ 00000000000000000010000000000001 | 10000000000000000000000000000001 | 101 | 11111111111111111111111111111110 |  0  0  0 
+ 00000000000000000010000000000001 | 10000000000000000000000000000001 | 110 | 01111111111111111101111111111110 |  0  0  0 
+ 00000000000000000010000000000001 | 10000000000000000000000000000001 | 111 | 10000000000000000010000000000001 |  0  0  0 
+------------------------------------------------------------------------------------------------------------------------
+Testing CarryOuts
+ 10000000000000000010000000000001 | 10000000000000000000000000000000 | 000 | 00000000000000000010000000000001 |  1  0  1 
+ 10000000000000000010000000000001 | 10000000000000000000000000000000 | 001 | 00000000000000000010000000000001 |  1  0  0 
+ 10000000000000000010000000000001 | 10000000000000000000000000000000 | 010 | 00000000000000000000000000000000 |  0  1  0 
+ 10000000000000000010000000000001 | 10000000000000000000000000000000 | 011 | 00000000000000000010000000000001 |  0  0  0 
+ 10000000000000000010000000000001 | 10000000000000000000000000000000 | 100 | 10000000000000000000000000000000 |  0  0  0 
+ 10000000000000000010000000000001 | 10000000000000000000000000000000 | 101 | 01111111111111111111111111111111 |  0  0  0 
+ 10000000000000000010000000000001 | 10000000000000000000000000000000 | 110 | 01111111111111111101111111111110 |  0  0  0 
+ 10000000000000000010000000000001 | 10000000000000000000000000000000 | 111 | 10000000000000000010000000000001 |  0  0  0 
+------------------------------------------------------------------------------------------------------------------------
+Test with Random Numbers
+ 00000100001001010010001101000111 | 00010000110100010110010100001001 | 000 | 00010100111101101000100001010000 |  0  0  0 
+ 00000100001001010010001101000111 | 00010000110100010110010100001001 | 001 | 11110011010100111011111000111110 |  0  0  0 
+ 00000100001001010010001101000111 | 00010000110100010110010100001001 | 010 | 00000000000000000000000000000001 |  0  0  0 
+ 00000100001001010010001101000111 | 00010000110100010110010100001001 | 011 | 00010100111101000100011001001110 |  0  0  0 
+ 00000100001001010010001101000111 | 00010000110100010110010100001001 | 100 | 00000000000000010010000100000001 |  0  0  0 
+ 00000100001001010010001101000111 | 00010000110100010110010100001001 | 101 | 11111111111111101101111011111110 |  0  0  0 
+ 00000100001001010010001101000111 | 00010000110100010110010100001001 | 110 | 11101011000010101001100010110000 |  0  0  0 
+ 00000100001001010010001101000111 | 00010000110100010110010100001001 | 111 | 00010100111101010110011101001111 |  0  0  0 
+```
+
+While testing our ALU with this testbench, we caught an error with our third test. Our ALU was not correctly changing overflow to 0 when the SLT function was enabled.
 
 ## Timing Analysis
 
-In addition to the propegation delays that each function causes, 190 delay is added by the 8 input multiplexer which controls which function's output is propagated, 110 is added from the SLTControl, and 70 is added by the SLTinator. These added delays are included in the following worst propegation dealys for each function.
+In addition to the propegation delays that each function causes, 190 delay is added by the 8 input multiplexer which controls which function's output is propagated, 110 is added from the SLTControl, and 70 is added by the SLTinator. These added delays are included in the following worst propegation delays for each function.
 
 Mode | Delay
 -----|-----
@@ -88,6 +141,8 @@ SLT uses the subtract function and contributes no additional delay, thus having 
 
 For Add and Subtract, the first bit's worst propegation delay is A/B to CarryOut and the rest of the bit's delay comes from CarryIn to CarryOut.
 
-# Work Plan Reflection
+## Work Plan Reflection
 
-Lorem ipsum
+We followed our work plan fairly closely, and it was relatively accurate in terms of total hours breakdowns of tasks. Because we wrote the plan before we had a full plan for the system's structure, we implemented the functions a bit out of order and started with *add* and *subtract*. Additionally, some of our timing estimates were a bit off; it took us significantly less time for the generic gates and significantly more time for the SLT than our original plan.
+
+At one point, we questioned our decision to do a one-bit ALU module, and spent a fair amount of time assessing our high-level architecture and eventually coming to the conclusion that a one-bit ALU was fine. Overall, we spent around 6 or 7 hours on this lab, which is within a reasonable margin of our fairly ambitious 5-hour estimate.
