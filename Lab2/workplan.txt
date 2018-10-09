@@ -1,15 +1,20 @@
 Input Conditioning
--initial planning    45 min
+-initial planning    45 min        Done by end of Tuesday 10/9
 -input sync          45 min
 -input debounce      30 min
 -edge detection      30 min
 
 Shift Register       45 min
 
-MidPoint Checkin     90 min
+                                   All above done by end of Wednesday 10/10
+
+MidPoint Checkin     90 min        Done by end of Thursday 10/11
 
 SPI Memory:
 -planning            90 min
--putting it together 120 min
+-putting it together 120 min       Done by end of Wednesday 10/17
 
-Write Up             90 min
+Write Up             90 min        Done by end of Thursday 10/18
+
+
+
