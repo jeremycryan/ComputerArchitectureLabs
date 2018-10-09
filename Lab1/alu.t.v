@@ -159,7 +159,43 @@ module testALU32();
 	assign sel = 3'b111;
     #5000
 	$display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+    $display("------------------------------------------------------------------------------------------------------------------------");
+// ------------------------------------------------------------------------------------------------------------------------------------
     
+    assign a = 32'b00000100001001010010001101000111;
+    assign b = 32'b00010000110100010110010100001001;
+    assign sel = 3'b000;
+    #5000
+    $display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+       
+    assign sel = 3'b001;
+    #5000
+    $display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+        
+	assign sel = 3'b010;
+    #5000
+    $display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+
+	assign sel = 3'b011;
+    #5000
+	$display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+	
+	assign sel = 3'b100;
+    #5000
+	$display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+
+	assign sel = 3'b101;
+    #5000
+	$display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+
+	assign sel = 3'b110;
+    #5000
+	$display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+
+	assign sel = 3'b111;
+    #5000
+	$display(" %b | %b | %b | %b |  %b  %b  %b ", a, b, sel, out, carryout, zero, overflow);
+  
     $finish();
     end
 endmodule
