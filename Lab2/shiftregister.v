@@ -20,6 +20,23 @@ output              serialDataOut       // Positive edge synchronized
 
     reg [width-1:0]      shiftregistermem;
     always @(posedge clk) begin
-        // Your Code Here
+        
+        if (parallelLoad) begin
+
+            shiftregistermem <= parallelDataIn;
+
+        end else begin
+            
+            genvar i;
+            for(i = 0; i < width-1; i=i+1)begin
+                shiftregistermem[i+1] <= shiftregistermem[i]; 
+            end
+
+            shiftregistermem[0] <= serialDataIn;
+
+        end
     end
+
+    assign paralleDataOut = shiftregistermem;
+    assign serialDataOut = shiftregistermem[width-1];
 endmodule
