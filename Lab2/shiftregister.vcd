@@ -1,0 +1,271 @@
+$date
+	Thu Oct 11 23:19:51 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module testshiftregister $end
+$var wire 1 ! serialDataOut $end
+$var wire 8 " parallelDataOut [7:0] $end
+$var reg 1 # clk $end
+$var reg 8 $ parallelDataIn [7:0] $end
+$var reg 1 % parallelLoad $end
+$var reg 1 & peripheralClkEdge $end
+$var reg 1 ' serialDataIn $end
+$scope module dut $end
+$var wire 1 # clk $end
+$var wire 8 ( parallelDataIn [7:0] $end
+$var wire 8 ) parallelDataOut [7:0] $end
+$var wire 1 % parallelLoad $end
+$var wire 1 & peripheralClkEdge $end
+$var wire 1 ' serialDataIn $end
+$var wire 1 ! serialDataOut $end
+$var reg 8 * shiftregistermem [7:0] $end
+$var integer 32 + i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx +
+bx *
+bx )
+b10100101 (
+0'
+0&
+1%
+b10100101 $
+0#
+bx "
+x!
+$end
+#10
+1!
+b10100101 "
+b10100101 )
+b10100101 *
+1&
+1#
+#20
+0&
+0#
+#25
+0%
+#30
+0!
+b1001010 "
+b1001010 )
+b1001010 *
+b111 +
+1&
+1#
+#40
+0&
+0#
+#50
+1!
+b10010100 "
+b10010100 )
+b10010100 *
+b111 +
+1&
+1#
+#60
+0&
+0#
+#70
+0!
+b101000 "
+b101000 )
+b101000 *
+b111 +
+1&
+1#
+#80
+0&
+0#
+#90
+b1010000 "
+b1010000 )
+b1010000 *
+b111 +
+1&
+1#
+#100
+0&
+0#
+#110
+1!
+b10100000 "
+b10100000 )
+b10100000 *
+b111 +
+1&
+1#
+#120
+0&
+0#
+#130
+0!
+b1000000 "
+b1000000 )
+b1000000 *
+b111 +
+1&
+1#
+#140
+0&
+0#
+#150
+1!
+b10000000 "
+b10000000 )
+b10000000 *
+b111 +
+1&
+1#
+#160
+0&
+0#
+#170
+0!
+b0 "
+b0 )
+b0 *
+b111 +
+1&
+1#
+#175
+1'
+#180
+0&
+0#
+#190
+b1 "
+b1 )
+b1 *
+b111 +
+1&
+1#
+#200
+0&
+0#
+#210
+b11 "
+b11 )
+b11 *
+b111 +
+1&
+1#
+#220
+0&
+0#
+#230
+b111 "
+b111 )
+b111 *
+b111 +
+1&
+1#
+#235
+0'
+#240
+0&
+0#
+#250
+b1110 "
+b1110 )
+b1110 *
+b111 +
+1&
+1#
+#260
+0&
+0#
+#270
+b11100 "
+b11100 )
+b11100 *
+b111 +
+1&
+1#
+#280
+0&
+0#
+#290
+b111000 "
+b111000 )
+b111000 *
+b111 +
+1&
+1#
+#300
+0&
+0#
+#310
+b1110000 "
+b1110000 )
+b1110000 *
+b111 +
+1&
+1#
+#320
+0&
+0#
+#330
+1!
+b11100000 "
+b11100000 )
+b11100000 *
+b111 +
+1&
+1#
+#340
+0&
+0#
+#350
+b11000000 "
+b11000000 )
+b11000000 *
+b111 +
+1&
+1#
+#360
+0&
+0#
+#370
+b10000000 "
+b10000000 )
+b10000000 *
+b111 +
+1&
+1#
+#380
+0&
+0#
+#390
+0!
+b0 "
+b0 )
+b0 *
+b111 +
+1&
+1#
+#400
+0&
+0#
+#410
+b111 +
+1&
+1#
+#420
+0&
+0#
+#430
+b111 +
+1&
+1#
+#435

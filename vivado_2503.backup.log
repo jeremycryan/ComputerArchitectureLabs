@@ -1,0 +1,292 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Oct 11 21:26:39 2018
+# Process ID: 2503
+# Current directory: /home/comparch/Documents/ComputerArchitectureLabs
+# Command line: vivado
+# Log file: /home/comparch/Documents/ComputerArchitectureLabs/vivado.log
+# Journal file: /home/comparch/Documents/ComputerArchitectureLabs/vivado.jou
+#-----------------------------------------------------------
+start_gui
+create_project lab2 /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2 -part xc7z010clg400-1
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.2/data/ip'.
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 5958.898 ; gain = 65.402 ; free physical = 1479 ; free virtual = 3521
+set_property board_part digilentinc.com:zybo:part0:1.0 [current_project]
+add_files -fileset constrs_1 -norecurse /home/comparch/Documents/ComputerArchitectureLabs/ZYBO_Master.xdc
+import_files -fileset constrs_1 /home/comparch/Documents/ComputerArchitectureLabs/ZYBO_Master.xdc
+import_files -norecurse {/home/comparch/Documents/ComputerArchitectureLabs/Lab2/inputconditioner.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/shiftregister.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+CRITICAL WARNING: [HDL 9-849] Syntax error : file ended before end of clause. [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v:58]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+WARNING: [filemgmt 20-736] The current top specification, "inputconditioner", does not uniquely identify a single design element. Using "inputconditioner" (Library: xil_defaultlib, File: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v).
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+	(Active) Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+	(Active) Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v
+[Thu Oct 11 21:37:00 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+WARNING: [filemgmt 20-736] The current top specification, "inputconditioner", does not uniquely identify a single design element. Using "inputconditioner" (Library: xil_defaultlib, File: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v).
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+	(Active) Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+	(Active) Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v
+[Thu Oct 11 21:37:35 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/synth_1/runme.log
+update_compile_order -fileset sources_1
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v'.
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v'.
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+	(Active) Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+	(Active) Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v
+[Thu Oct 11 21:41:02 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/synth_1/runme.log
+launch_runs impl_1
+[Thu Oct 11 21:52:48 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/runme.log
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v'.
+reset_run synth_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+	(Active) Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+	(Active) Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v
+[Thu Oct 11 21:57:22 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/synth_1/runme.log
+launch_runs impl_1
+[Thu Oct 11 22:01:29 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/runme.log
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v'.
+reset_run synth_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+	(Active) Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+	(Active) Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v
+[Thu Oct 11 22:08:47 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/synth_1/runme.log
+launch_runs impl_1
+[Thu Oct 11 22:14:12 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/runme.log
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v'.
+reset_run synth_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+	(Active) Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+	(Active) Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v
+[Thu Oct 11 22:28:25 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/synth_1/runme.log
+launch_runs impl_1
+[Thu Oct 11 22:34:35 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/runme.log
+synth_design -rtl -name rtl_1
+Command: synth_design -rtl -name rtl_1
+Starting synth_design
+Using part: xc7z010clg400-1
+Top: midpoint
+WARNING: [Synth 8-2490] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+WARNING: [Synth 8-2490] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 6362.578 ; gain = 70.996 ; free physical = 1192 ; free virtual = 3317
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'midpoint' [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v:4]
+INFO: [Synth 8-6157] synthesizing module 'inputconditioner' [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+	Parameter counterwidth bound to: 3 - type: integer 
+	Parameter waittime bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'inputconditioner' (1#1) [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+INFO: [Synth 8-6157] synthesizing module 'shiftregister' [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+	Parameter width bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'shiftregister' (2#1) [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'midpoint' (3#1) [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v:4]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 6399.828 ; gain = 108.246 ; free physical = 1207 ; free virtual = 3332
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 6399.828 ; gain = 108.246 ; free physical = 1206 ; free virtual = 3331
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 6399.828 ; gain = 108.246 ; free physical = 1206 ; free virtual = 3331
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/constrs_1/imports/ComputerArchitectureLabs/ZYBO_Master.xdc]
+Finished Parsing XDC File [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/constrs_1/imports/ComputerArchitectureLabs/ZYBO_Master.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:14 ; elapsed = 00:00:47 . Memory (MB): peak = 6723.344 ; gain = 431.762 ; free physical = 875 ; free virtual = 3006
+10 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:47 . Memory (MB): peak = 6723.344 ; gain = 431.762 ; free physical = 875 ; free virtual = 3006
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v'.
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v'.
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/shiftregister.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/shiftregister.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/shiftregister.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v'.
+update_compile_order -fileset sources_1
+import_files -force -norecurse /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v
+update_compile_order -fileset sources_1
+close_design
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+	(Active) Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+	(Active) Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v
+[Thu Oct 11 22:57:49 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/synth_1/runme.log
+launch_runs impl_1
+[Thu Oct 11 23:00:24 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream
+[Thu Oct 11 23:05:25 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.2
+  **** Build date : Jun 14 2018-20:18:37
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210279652021A
+open_hw_target: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 7318.539 ; gain = 395.301 ; free physical = 529 ; free virtual = 2418
+set_property PROGRAM.FILE {/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/midpoint.bit} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/midpoint.bit} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+update_files -from_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v -to_files /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v -filesets [get_filesets *]
+INFO: [filemgmt 20-762] Replacing file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v' with file '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v'.
+INFO: [filemgmt 20-1080] Importing file from '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/midpoint.v' to '/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v'.
+reset_run synth_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v:8]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v:9]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+	(Active) Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/midpoint.v
+	(Active) Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.srcs/sources_1/imports/Lab2/shiftregister.v
+[Thu Oct 11 23:20:56 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/synth_1/runme.log
+launch_runs impl_1
+[Thu Oct 11 23:22:53 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream
+[Thu Oct 11 23:25:43 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/comparch/Documents/ComputerArchitectureLabs/Lab2/lab2/lab2.runs/impl_1/midpoint.bit} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210279652021A
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 12 00:00:53 2018...
