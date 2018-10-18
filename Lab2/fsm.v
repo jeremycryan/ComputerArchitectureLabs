@@ -55,13 +55,13 @@ module fsm
             sr_we <= 0;
 
             if (count == 7) begin
-                if shift_reg_out_0
+                if(shift_reg_out_0)
                     state <= read_0;
-                if ~shift_reg_out_0
+                if(~shift_reg_out_0)
                     state <= write_0;
-                count <= 0'b000;
+                count <= 3'b000;
             end
-            else
+            else begin
                 count <= count+3'b001;
             end
 
@@ -95,7 +95,7 @@ module fsm
             dm_we <= 0;
             addr_we <= 0;
             sr_we <= 0;
-            count <= count + 0'b001;
+            count <= count + 3'b001;
 
             if (count == 6) begin
                 state <= write_1;
@@ -108,7 +108,7 @@ module fsm
             dm_we <= 1;
             addr_we <= 0;
             sr_we <= 0;
-            count <= 0'b000;
+            count <= 3'b000;
 
             state <= standby;
         end

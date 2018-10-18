@@ -6,11 +6,14 @@ module dflipflop
     input clk
 );
 
+    reg out;
+    assign q = out;
+
     // Assign D to Q at positive clock edge,
     // if enable is true.
     always @(posedge clk) begin
-        if en begin
-            q <= d;
+        if(en) begin
+            out <= d;
         end
     end
 

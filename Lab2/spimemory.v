@@ -5,14 +5,10 @@
 `include "inputconditioner.v"
 `include "shiftregister.v"
 `include "latch.v"
-`include "flips.v"
 `include "fsm.v"
 `include "datamemory.v"
 
 module spiMemory
-#(
-
-)
 (
     input           clk,        // FPGA clock
     input           sclk_pin,   // SPI clock
@@ -100,11 +96,10 @@ fsm statey(
 // Address Latch
 latch latchy(
                 .q(data_address),
-                .d(shift_reg_out_p),
+                .d(shift_reg_out_p[7:1]),
                 .en(addr_we),
                 .clk(clk)
 );
-always @(posedge clk) begin
     
 endmodule
    
