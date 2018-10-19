@@ -3,11 +3,11 @@ Jeremy and Nathaniel's labs for computer architecture. Fall 2018.
 
 ## Lab 0
 
-You can find [our lab report here.](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab0/0Lab_report.md)
+You can find [our Lab 0 report here.](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab0/0Lab_report.md)
 
 ## Lab 1
 
-You can find [our lab report here.](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab1/report.md)
+You can find [our Lab 1 report here.](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab1/report.md)
 
 ## Lab 2
 
@@ -20,4 +20,4 @@ We serially inputted the binary sequence 11010000 because it was a good demonstr
 We used a button to load the preset parallel sequence, switch 0 to set the serial input bit, switch 1 to act as the edge trigger for bit shifting, and switch 2 to switch views between the most and least significant four bits in the sequence.
 
 ### Final Report
-![Report](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab2/report.md)
+You can find [our Lab 2 report here.](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab2/report.md)
