@@ -10,7 +10,8 @@ module fsm
     parameter read_0 = 2,
     parameter read_1 = 3,
     parameter write_0 = 4,
-    parameter write_1 = 5
+    parameter write_1 = 5,
+    parameter wait_end = 6
 )
 (
     input sclk,        // system clock
@@ -37,30 +38,41 @@ module fsm
 
     always @(posedge sclk) begin
         if(state == standby) begin
-            miso_buff <= 0;
-            dm_we <= 0;
-            addr_we <= 0;
-            sr_we <= 0;
+
 
             if (~cs) begin
                 state <= wait_address;
                 count <= 3'b000;
+                miso_buff <= 0;
+                dm_we <= 0;
+                addr_we <= 1;
+                sr_we <= 0;
             end
         end
 
         if(state == wait_address) begin
-            miso_buff <= 0;
-            dm_we <= 0;
-            addr_we <= 1;
-            sr_we <= 0;
-
             if (count == 7) begin
-                if(shift_reg_out_0)
+                if(shift_reg_out_0) begin
+                    miso_buff <= 0;
+                    dm_we <= 0;
+                    addr_we <= 0;
+                    sr_we <= 1;
+                    count <= 3'b000;
                     state <= read_0;
-                if(~shift_reg_out_0)
+                end
+
+                if(~shift_reg_out_0) begin
+                    miso_buff <= 0;
+                    dm_we <= 0;
+                    addr_we <= 0;
+                    sr_we <= 0;
+
                     state <= write_0;
+                end
+
                 count <= 3'b000;
             end
+
             else begin
                 count <= count+3'b001;
             end
@@ -68,49 +80,55 @@ module fsm
         end
 
         if(state == read_0) begin
-            miso_buff <= 0;
-            dm_we <= 0;
-            addr_we <= 0;
-            sr_we <= 1;
-            count <= 3'b000;
-
-            state <= read_1;
-        end
-
-        if(state == read_1) begin
             miso_buff <= 1;
             dm_we <= 0;
             addr_we <= 0;
             sr_we <= 0;
+            state <= read_1;
+        end
+
+        if(state == read_1) begin
+
             count <= count + 3'b001;
 
             if (count == 6) begin
-                state <= standby;
+                state <= wait_end;
+                miso_buff <= 0;
+                dm_we <= 0;
+                addr_we <= 0;
+                sr_we <= 0;
             end
 
         end
 
         if(state == write_0) begin
-            miso_buff <= 0;
-            dm_we <= 0;
-            addr_we <= 0;
-            sr_we <= 0;
             count <= count + 3'b001;
 
             if (count == 6) begin
+                miso_buff <= 0;
+                dm_we <= 1;
+                addr_we <= 0;
+                sr_we <= 0;
+
                 state <= write_1;
             end
 
         end
 
         if(state == write_1) begin
-            miso_buff <= 0;
-            dm_we <= 1;
-            addr_we <= 0;
-            sr_we <= 0;
             count <= 3'b000;
 
-            state <= standby;
+            state <= wait_end;
+            miso_buff <= 0;
+            dm_we <= 0;
+            addr_we <= 0;
+            sr_we <= 0;
+        end
+
+        if(state == wait_end) begin
+            if(cs==1) begin
+                state <= standby;
+            end
         end
     end // end of always posedge sclk
 

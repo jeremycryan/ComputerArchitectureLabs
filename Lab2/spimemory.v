@@ -100,6 +100,9 @@ latch latchy(
                 .en(addr_we),
                 .clk(clk)
 );
+
+// Tri state-buffer enabled by miso_buff and output to the miso pin 
+assign miso_pin = (miso_buff) ? q:1'bz;
     
 endmodule
    
