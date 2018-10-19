@@ -43,7 +43,15 @@ This state writes the current value of the shift register to the data memory add
 This state waits for CS to be deasserted to high. Once CS is deasserted the FSM transitions back to `standby`.
 
 ## Testing:
-For our test we wrote to our spi memory and the read the same memory address we wrote to. We did this for two different sets of addresses and data in. We were unable to fix a problem when reading where the MISO buffer would be enabled a couple clk cycles before the shift register and d-flip flop were sending data to the line. However, we do not believe this to affect communications as the MISO line is sent data with the serial clock, so the error should not be read by the master since it happens between serial clock cycles.
+For our test, we wrote to our SPI memory and then read the same memory address we wrote to. We did this for two different sets of addresses and data in. We were unable to fix a problem when reading where the MISO buffer would be enabled a couple clk cycles before the shift register and d-flip flop were sending data to the line. However, we do not believe this to affect communications as the MISO line is sent data with the serial clock, so the error should not be read by the master since it happens between serial clock cycles.
+
+![Test case 1 waveform](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab2/test_1_waveform.png)
+
+Above is a GTKWave visualization of a test of our SPI memory. In this case, the R/W address is 0000011 and the data byte is 10101010. 
+
+![Test case 2 waveform](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab2/test_2_waveform.png)
+
+Above is the visualization of another test. In this case, the R/W address is 0011010 and the data byte is 11110000. In both of these cases, we first write data to the address, then attempt to read it.
 
 ## Work Plan Reflection:
 For our midpoint check-in we were on schedule with our work plan. For our final SPI memory however, we did less work on Wednesday than we scheduled in our work plan and a lot of work overflowed into Thursday. We planned to only do our report on Thursday but that is not what happened. In the future we need to be a little stricter about doing the amount of work we put on our work plan.
