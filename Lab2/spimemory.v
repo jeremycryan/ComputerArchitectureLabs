@@ -84,7 +84,8 @@ dflipflop flippy(
 
 // Finite State Machine
 fsm statey(
-                .sclk(sclk_pin),
+		.clk(clk),
+                .sclk(shift_reg_sclk),
                 .cs(cs_pin),
                 .shift_reg_out_0(shift_reg_out_p[0]),
                 .miso_buff(miso_buff),
