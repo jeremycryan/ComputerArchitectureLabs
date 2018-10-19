@@ -4,7 +4,7 @@ For this lab we created a SPI memory module using behavioral verilog.
 
 Overall, we followed the suggested schematic that was provided for the lab. The only difference we made was that our finite state machine also takes in the clk signal.
 
-![Schematic](https://camo.githubusercontent.com/a3d99b6ef56619616b97d89ff938a494d40f8ccb/68747470733a2f2f65333830323365322d612d36326362336131612d732d73697465732e676f6f676c6567726f7570732e636f6d2f736974652f6361313566616c6c2f7265736f75726365732f6c6162322d7370692d736368656d2e706e67)
+![Schematic](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab2/schematic.png)
 
 ## Input Conditioner
 Our Input Conditioner submodule takes in a noisy signal and outputs a debounced, conditioned signal along with positive edge and negative edge signals. As you can see in our schematic, we use three Input Conditioners in our SPI memory: one to condition the MOSI signal; one to get the positive and negative edges from the serial clock; and one to condition the chip select signal.
