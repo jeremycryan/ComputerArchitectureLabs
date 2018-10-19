@@ -28,17 +28,20 @@ The standby state waits for the CS pin to be asserted low, then transitions to t
 
 #### Wait_Address: 
 This state waits for all the address byte to be fully inputed into the shift register. The write enable pin for the address latch is driven high until after the 7th bit, which is the last bit of the address. Depending on the 8th bit (R/W bit) of the byte the state transitions to read_0 or write_0.
-
+This state waits for all the address byte to be fully inputed into the shift register. The write enable pin for the address latch is driven high until after the 7th bit, which is the last bit of the address. On the first serial clock cycle after the R/W bit is available, the state changes to `test_mosi`.
+#### Test_MOSI
+This state checks the most recent bit of the MOSI line and, if it is a zero, changes the state to `write_0`; otherwise, it changes the state to `read_0`. Because it's important that we pull the requested byte out of data memory and start the output to the MISO line within the next serial clock cycle, `test_mosi` transitions on the internal clock, not the serial clock.
 #### Read_0: 
-
+This state enables the MISO buffer, so that data can be pushed to the MISO line; it also loads a data memory byte to the shift register specified by the address stored in the address latch.
 #### Read_1:
-
+This state keeps the MISO line asserted as data is serially output from the shift register. After 8 bits, it changes state to `wait_end`.
 #### Write_0: 
-
+This state waits for all 8 data bits to be input to the shift register. Then, it changes state to `write_1`. During this state, the miso buffer, shifter enable, address latch enable, and data memory write enable lines are all low.
 #### Write_1:
-
+This state writes the current value of the shift register to the data memory address stored in the address latch. It then changes state to `wait_end`.
 #### Wait_End: 
 This state waits for CS to be deasserted to high. Once CS is deasserted the FSM transitions back to the Standby state.
+This state waits for CS to be deasserted to high. Once CS is deasserted the FSM transitions back to `standby`.
 
 ## Testing:
 For our test we wrote to our spi memory and the read the same memory address we wrote to.
