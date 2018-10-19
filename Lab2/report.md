@@ -40,7 +40,6 @@ This state waits for all 8 data bits to be input to the shift register. Then, it
 #### Write_1:
 This state writes the current value of the shift register to the data memory address stored in the address latch. It then changes state to `wait_end`.
 #### Wait_End: 
-This state waits for CS to be deasserted to high. Once CS is deasserted the FSM transitions back to the Standby state.
 This state waits for CS to be deasserted to high. Once CS is deasserted the FSM transitions back to `standby`.
 
 ## Testing:
