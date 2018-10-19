@@ -20,14 +20,14 @@ Our address latch is made up of 7 flip flops. Since the address in SPI is only 7
 ## D-Flip Flop
 This submodule is a d-flip flop that is controlled by the negative edge of the serial clock.
 
-## Final State Machine
-Our final state machine had 7 states in total. While the finite state machine runs on the clk signal, some state transitions and counters are controlled by the positive edge of the serial clock so that data is presented according to the our defined SPI behavior.
+## Finite State Machine
+Our finite state machine had 7 states in total. While the finite state machine runs on the clk signal, some state transitions and counters are controlled by the positive edge of the serial clock so that data is presented according to the our defined SPI behavior.
+
+![Block diagram](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab2/FSM_diagram.png)
 
 #### Standby: 
-The standby state waits for the CS pin to be asserted low, then transitions to the Wait_Address state.
-
+The standby state waits for the CS pin to be asserted low, then transitions to the `wait_address` state.
 #### Wait_Address: 
-This state waits for all the address byte to be fully inputed into the shift register. The write enable pin for the address latch is driven high until after the 7th bit, which is the last bit of the address. Depending on the 8th bit (R/W bit) of the byte the state transitions to read_0 or write_0.
 This state waits for all the address byte to be fully inputed into the shift register. The write enable pin for the address latch is driven high until after the 7th bit, which is the last bit of the address. On the first serial clock cycle after the R/W bit is available, the state changes to `test_mosi`.
 #### Test_MOSI
 This state checks the most recent bit of the MOSI line and, if it is a zero, changes the state to `write_0`; otherwise, it changes the state to `read_0`. Because it's important that we pull the requested byte out of data memory and start the output to the MISO line within the next serial clock cycle, `test_mosi` transitions on the internal clock, not the serial clock.
