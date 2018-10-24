@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Oct 18 21:44:24 2018
+# Process ID: 2838
+# Current directory: /home/comparch/Documents/ComputerArchitectureLabs/Lab2
+# Command line: vivado
+# Log file: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/vivado.log
+# Journal file: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/vivado.jou
+#-----------------------------------------------------------
+start_gui
+create_project final /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final -part xc7z010clg400-1
+set_property board_part digilentinc.com:zybo:part0:1.0 [current_project]
+add_files -fileset constrs_1 -norecurse /home/comparch/Documents/ComputerArchitectureLabs/ZYBO_Master.xdc
+import_files -fileset constrs_1 /home/comparch/Documents/ComputerArchitectureLabs/ZYBO_Master.xdc
+import_files -norecurse {/home/comparch/Documents/ComputerArchitectureLabs/Lab2/spimemory.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/datamemory.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/inputconditioner.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/fsm.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/latch.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/flips.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/shiftregister.v}
+update_compile_order -fileset sources_1
+launch_runs synth_1
+wait_on_run synth_1
+launch_runs impl_1
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1

@@ -1,0 +1,59 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Oct 18 21:44:24 2018
+# Process ID: 2838
+# Current directory: /home/comparch/Documents/ComputerArchitectureLabs/Lab2
+# Command line: vivado
+# Log file: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/vivado.log
+# Journal file: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/vivado.jou
+#-----------------------------------------------------------
+start_gui
+create_project final /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final -part xc7z010clg400-1
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.2/data/ip'.
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 5953.441 ; gain = 55.445 ; free physical = 999 ; free virtual = 3429
+set_property board_part digilentinc.com:zybo:part0:1.0 [current_project]
+add_files -fileset constrs_1 -norecurse /home/comparch/Documents/ComputerArchitectureLabs/ZYBO_Master.xdc
+import_files -fileset constrs_1 /home/comparch/Documents/ComputerArchitectureLabs/ZYBO_Master.xdc
+import_files -norecurse {/home/comparch/Documents/ComputerArchitectureLabs/Lab2/spimemory.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/datamemory.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/inputconditioner.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/fsm.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/latch.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/flips.v /home/comparch/Documents/ComputerArchitectureLabs/Lab2/shiftregister.v}
+update_compile_order -fileset sources_1
+launch_runs synth_1
+WARNING: [HDL 9-2994] overwriting previous definition of module dflipflop [flips.v:1]
+WARNING: [HDL 9-2994] overwriting previous definition of module dflipflop [flips.v:1]
+WARNING: [HDL 9-2994] overwriting previous definition of module inputconditioner [inputconditioner.v:8]
+WARNING: [HDL 9-2994] overwriting previous definition of module shiftregister [shiftregister.v:9]
+WARNING: [HDL 9-2994] overwriting previous definition of module latch [latch.v:3]
+WARNING: [HDL 9-2994] overwriting previous definition of module fsm [fsm.v:6]
+WARNING: [HDL 9-2994] overwriting previous definition of module datamemory [datamemory.v:8]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'datamemory()' found in library 'xil_defaultlib'
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/datamemory.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/spimemory.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'dflipflop()' found in library 'xil_defaultlib'
+Duplicate found at line 1 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/flips.v
+Duplicate found at line 1 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/latch.v
+Duplicate found at line 1 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/spimemory.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'fsm()' found in library 'xil_defaultlib'
+Duplicate found at line 6 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/fsm.v
+Duplicate found at line 6 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/spimemory.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'inputconditioner()' found in library 'xil_defaultlib'
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/inputconditioner.v
+Duplicate found at line 8 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/spimemory.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'latch()' found in library 'xil_defaultlib'
+Duplicate found at line 3 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/latch.v
+Duplicate found at line 3 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/spimemory.v
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'shiftregister()' found in library 'xil_defaultlib'
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/shiftregister.v
+Duplicate found at line 9 of file /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.srcs/sources_1/imports/Lab2/spimemory.v
+[Thu Oct 18 21:47:08 2018] Launched synth_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.runs/synth_1/runme.log
+launch_runs impl_1
+[Thu Oct 18 21:49:12 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream
+[Thu Oct 18 21:52:06 2018] Launched impl_1...
+Run output will be captured here: /home/comparch/Documents/ComputerArchitectureLabs/Lab2/final/final.runs/impl_1/runme.log
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 18 22:11:12 2018...
