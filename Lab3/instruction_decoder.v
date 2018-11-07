@@ -21,7 +21,36 @@ module instruction_decoder (
     output branch
 
 );
+wire op,shamt,funct;
+assign op = inst[31:26];
+assign shamt = inst[10:6];
+assign funct = inst[5:0];
 
+assign rs = inst[25:21];
+assign rt = inst[20:16];
+assign rd = [15:11];
+assign imm16 = [15:0];
+assign target_instr = [25:0];
+
+always @(op)begin
+// Branch signal logic
+if((op==6'b000100) || (op==6'b000101)
+    branch = 1;
+else 
+    branch = 0;
+
+// Jump signal logic
+if((op==6'b000010)||(op==6'b000011)||(op==6'b0 && funct==6'b001000))
+    jump = 0;
+else
+    jump = 1;
+end
+
+// ALusrc signal logic, ALUsrc is true on I type instructions
+if((op!=6'b0)&&(op!=6'b10)&&(op!=6'b11)&&(op<6'b10000 && op >6'b010100))
+    ALUsrc = 1;
+else
+    ALUsrc = 0;
 // Nathaniel add code above this line. Jeremy add code below this line.
 
 endmodule
