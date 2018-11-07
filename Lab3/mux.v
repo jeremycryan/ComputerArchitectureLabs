@@ -29,9 +29,9 @@ module mux2_32
     input sel
 );
 
-    wire mux1, mux2;
     wire selnot;
 
+    `NOT selNOT(selnot,sel);
     genvar i;
     generate
     for(i=0;i<32;i=i+1)begin
