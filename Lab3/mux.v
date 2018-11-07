@@ -21,6 +21,25 @@ module mux2
 
 endmodule
 
+module mux2_32
+(
+    output[31:0] out,
+    input[31:0] in0,
+    input[31:0] in1,
+    input sel
+);
+
+    wire mux1, mux2;
+    wire selnot;
+
+    genvar i;
+    generate
+    for(i=0;i<32;i=i+1)begin
+        mux2 muxy(out[i],in0[i],in1[i],sel);
+    end
+    endgenerate
+endmodule
+
 // 8 bit mux
 module mux8
 (
