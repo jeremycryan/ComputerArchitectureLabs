@@ -8,11 +8,12 @@
 module datamemory
 #(
     parameter addresswidth  = 32,
-    parameter depth         = 2**addresswidth,
-    parameter width         = 8 
-)
-(
-    input 		                clk,
+    // limiting datamemory depth because otherwise icarus verilog
+    // won't compile it
+    parameter depth         = 2**(addresswidth-2),
+    parameter width         = 32
+)(
+    input 			clk,
     output reg [width-1:0]      dataOut,
     input [addresswidth-1:0]    address,
     input                       writeEnable,
