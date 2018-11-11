@@ -44,34 +44,52 @@ if((op==6'b000010)||(op==6'b000011)||(op==6'b0 && funct==6'b001000))
     jump = 0;
 else
     jump = 1;
-end
+
 
 // ALusrc signal logic, ALUsrc is true on I type instructions
 if((op!=6'b0)&&(op!=6'b10)&&(op!=6'b11)&&(op<6'b10000 && op >6'b010100))
     ALUsrc = 1;
 else
     ALUsrc = 0;
-// Nathaniel add code above this line. Jeremy add code below this line.
 
-    always @(*) begin
-        
-        // Instruction is R type if op code is 0 or 16-20
-        if ((op == 6'b000000) || (op[5:2] == 6'b0100))
-            regDst = 1'b1;
-        else
-            regDst = 1'b0;
+// memToReg is true if LW instruciton - op==100011
+if(op==6'b100011)
+    memToReg = 1;
+else
+    memToReg = 0;
 
-        // Write to register on load word, jump and link, and most math/logic
-        if ((regDst) || //TODO
+// ALUcntrl signal
+// ALucntrl == 0, which is add operation, for LW,SW,ADDI and ADD
+if((op==6'b100011)||(op==6'b101011)||(op==6'b1000)||((op==6'b0)&&(funct==6'100000)))
+    ALUcntrl = 0;
+// ALUcntrl == 1, which is sub operation, for SUB
+if((op==6'b0)&&(funct==6'b100010))
+    ALUcntrl = 1;
+// ALUcntrl ==2, which is SLT
+if((op==6'b0)&&(funct==6'b101010))
+    ALUcntrl = 2;
+// ALUcntrl == 3, which is XOR, for XORI, BEQ and BNE
+if((op==6'h4)||(op==6'h5)||(op==6'he))
+    ALUcntrl = 3;
 
-        // Write to memory only on store commands
-        if (op == 8'b101011)
-            memWr = 1'b1;
-        else
-            memWr = 1'b0;
-        
-         
-        
-    end
+// Regwr signal logic, true for LW, XORI, ADDI, ADD, SUB, and SLT
+if((op==6'h23)||(op==6'h3)||(op==6'he)||(op==6'h8)||((op==6'h0)&&((funct==6'h20)||(funct==6'h22)||(funct==6'h2a))))
+    regWr = 1;
+else
+    regWr = 0;
+
+
+// Instruction is R type if op code is 0 or 16-20
+if ((op == 6'b000000) || (op[5:2] == 6'b0100))
+    regDst = 1'b1;
+else
+    regDst = 1'b0;
+
+// Write to memory only on store commands
+if (op == 8'b101011)
+    memWr = 1'b1;
+else
+    memWr = 1'b0;
+end
 
 endmodule
