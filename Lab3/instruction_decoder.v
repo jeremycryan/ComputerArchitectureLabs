@@ -34,7 +34,7 @@ assign rd = inst[15:11];
 assign imm16 = inst[15:0];
 assign target_instr = inst[25:0];
 
-always @(op)begin
+always @(*)begin
 // Branch signal logic
 if((op==6'b000100) || (op==6'b000101))
     branch = 1'b1;
@@ -49,7 +49,7 @@ else
 
 
 // ALusrc signal logic, ALUsrc is true on I type instructions
-if((op!=6'b0)&&(op!=6'b10)&&(op!=6'b11)&&(op<6'b10000 && op >6'b010100))
+if((op!==6'b0)&&(op!==6'b10)&&(op!==6'b11)&&((op<6'b010000) || (op >6'b010100)))
     ALUsrc = 1'b1;
 else
     ALUsrc = 1'b0;
@@ -74,7 +74,7 @@ if((op==6'b0)&&(funct==6'b101010))
 if((op==6'h4)||(op==6'h5)||(op==6'he))
     ALUcntrl = 3'h3;
 
-// Regwr signal logic, true for LW, XORI, ADDI, ADD, SUB, and SLT
+// Regwr signal logic, true for LW, JL, XORI, ADDI, ADD, SUB, and SLT
 if((op==6'h23)||(op==6'h3)||(op==6'he)||(op==6'h8)||((op==6'h0)&&((funct==6'h20)||(funct==6'h22)||(funct==6'h2a))))
     regWr = 1'b1;
 else
