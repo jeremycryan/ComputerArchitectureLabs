@@ -34,8 +34,9 @@ module datapath (
 
     // Generate multiplexer for register write input
     genvar i;
-    generate for (i=0; i<5; i=i+1) begin
-        mux2 reg_wr_select (reg_wr_addr[i], rt[i], rd[i], RegDst);
+    generate  
+    for(i=0; i<5; i=i+1) begin
+        mux2 reg_wr_select(reg_wr_addr[i], rt[i], rd[i], RegDst);
     end 
     endgenerate
 
