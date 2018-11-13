@@ -1,11 +1,11 @@
 //------------------------------------------------------------------------
-// Data Memory
+// Instruction Memory
 //   Positive edge triggered
 //   dataOut always has the value mem[address]
 //   If writeEnable is true, writes dataIn to mem[address]
 //------------------------------------------------------------------------
 
-module datamemory
+module instruction_memory
 #(
     parameter addresswidth  = 32,
     // limiting datamemory depth because otherwise icarus verilog
@@ -15,23 +15,14 @@ module datamemory
 )(
     input 			clk,
     output [4*width-1:0]      dataOut,
-    input [addresswidth-1:0]    address,
-    input                       writeEnable,
-    input [(4*width)-1:0]       dataIn
+    input [addresswidth-1:0]    address
 );
 
 
     reg [width-1:0] memory [depth-1:0];
 
-    always @(posedge clk) begin
-        if(writeEnable)begin
-            memory[address] <= dataIn[31:24];
-            memory[address+1] <= dataIn[23:16];
-            memory[address+2] <= dataIn[15:8];
-            memory[address+3] <= dataIn[7:0];
-        end
-
-
+    initial begin
+        $readmemh("fib_0.mem", memory);
     end
 
     assign dataOut = {memory[address], 

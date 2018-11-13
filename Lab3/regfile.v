@@ -1,5 +1,4 @@
 `include "decoders.v"
-`include "mux.v"
 `include "register.v"
 //------------------------------------------------------------------------------
 // MIPS register file
@@ -29,7 +28,7 @@ input		Clk		// Clock (Positive Edge Triggered)
 
   // Zero Register
   // I let the input port (d) just float, not sure if this is best practice or not
-  register32zero zeros(.q(registersOut[0]),.d(),.wrenable(enables[0]),.clk(Clk));
+  register32zero zeros(.q(registersOut[0]),.d(32'b0),.wrenable(enables[0]),.clk(Clk));
   generate
 
   genvar i;

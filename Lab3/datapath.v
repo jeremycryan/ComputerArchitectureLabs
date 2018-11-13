@@ -20,8 +20,9 @@ module datapath (
     input ALUSrc,		// If true, ALU gets register output
     input[2:0] ALUCntrl,	// Control bits for ALU
     input MemWr,		// True if writing to data memory
-    input MemToReg		// True if data memory output is stored in register file
-
+    input MemToReg,		// True if data memory output is stored in register file
+    // Zero output of ALU 
+    output zero
 );
 
 ///////////////////////////////////////////////////////////////////////////
@@ -75,7 +76,7 @@ module datapath (
         .out(ALU_out),
         .carryout(),		// TODO determine whether these
         .overflow(),		// outputs need to go somewhere
-        .zero(),
+        .zero(zero),
         .a(da),
         .b(ALU_in_2),
         .control(ALUCntrl)
