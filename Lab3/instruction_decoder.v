@@ -19,8 +19,9 @@ module instruction_decoder (
     output reg ALUsrc, 
     output reg jump,
     output reg branch,
-    output reg bne
-
+    output reg bne,
+    output reg jl,
+    output reg jr
 );
 wire[5:0] op;
 wire[4:0] shamt;
@@ -48,6 +49,17 @@ if((op==6'b000010)||(op==6'b000011)||(op==6'b0 && funct==6'b001000))
 else
     jump = 1'b1;
 
+// jl signal logic
+if(op==6'h3)
+    jl = 1'b1;
+else
+    jl = 1'b0;
+
+// jr signal logic
+if((op==6'h0)&&(funct==6'h8))
+    jr = 1'b1;
+else
+    jr = 1'b0;
 // bne signal logic
 if(op==6'h5)
     bne = 1'b1;

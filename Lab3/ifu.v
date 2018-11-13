@@ -7,9 +7,11 @@
 module ifu
 (
     output[29:0] address,
+    output[31:0] pcStore,
     input[25:0] targetInstr,
     input[15:0] imm16,
-    input branch,jump, zero, bne, clk
+    input[31:0] jRrs,
+    input branch,jump, zero, bne, jl, jr, clk
 );
 
 reg[31:0] pc;
@@ -18,6 +20,8 @@ wire[31:0] addend;
 wire[31:0] sum;
 wire[31:0] concatenate;
 wire[31:0] pcNext;
+wire[31:0] addendInter;
+wire[31:0] jumpAddress;
 
 wire do_branch, branch_condition;
 
@@ -25,11 +29,14 @@ initial begin
     pc <= 32'b00000000000000000000000000000000;
 end
 
+assign pcStore = sum;
+
 assign address = pc[29:0];
 signExtend1632 extend(immExtend,imm16);
 `XOR condition(branch_condition,zero,bne); // Takes care of BNE and BEQ
 `AND branchy(do_branch,branch,branch_condition); // Decides if to branch
-mux2_32 addMux(addend,32'b00000000000000000000000000000000,immExtend,do_branch);
+mux2_32 addMux1(addendInter,32'b00000000000000000000000000000000,immExtend,do_branch);
+mux2_32 addMux2(addend,addendInter,32'b1,jl);
 Adder32Bit adder(
     .sum(sum),
     .carryout(),
@@ -39,7 +46,8 @@ Adder32Bit adder(
 );
 
 assign concatenate = {pc[31:28],targetInstr};
-mux2_32 jumpMux(pcNext,concatenate,sum,jump); 
+mux2_32 jumpMux1(jumpAddress, concatenate, jRrs, jr);
+mux2_32 jumpMux2(pcNext,jumpAddress,sum,jump); 
 
 // Assign pc to pcNext on clk edge
 always @(posedge clk)begin

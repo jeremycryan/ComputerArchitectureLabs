@@ -22,7 +22,10 @@ module datapath (
     input MemWr,		// True if writing to data memory
     input MemToReg,		// True if data memory output is stored in register file
     // Zero output of ALU 
-    output zero
+    output zero,
+    input jl,           // if it is a jl instruction
+    input[31:0] pcStore,// for jl instructions, to be stored in reg[31]
+    output[31:0] jRrs   // for JR instructions
 );
 
 ///////////////////////////////////////////////////////////////////////////
@@ -30,16 +33,23 @@ module datapath (
 ///////////////////////////////////////////////////////////////////////////
 
     // Initialize wires
-    wire[4:0] reg_wr_addr;
-    wire[31:0] da, db, dw;
+    wire[4:0] reg_wr_addr, reg_wr_addr_inter;
+    wire[31:0] da, db, dw, dwInter;
+
+    assign jRrs = da;
 
     // Generate multiplexer for register write input
     genvar i;
     generate  
     for(i=0; i<5; i=i+1) begin
-        mux2 reg_wr_select(reg_wr_addr[i], rt[i], rd[i], RegDst);
+        mux2 reg_wr_select1(reg_wr_addr_inter[i], rt[i], rd[i], RegDst);
+        mux2 reg_wr_select2(reg_wr_addr[i],reg_wr_addr_inter[i],1'b1,jl); // if jl, address is 31
     end 
     endgenerate
+
+    // If jl instruction, write pcStore to reg[31]
+    mux2_32 dwMux(dw, dwInter, pcStore, jl);
+    
 
     // Create register
     regfile reggie (
@@ -100,7 +110,7 @@ module datapath (
 
     // Multiplexer to determine register write data
     mux2_32 reg_write_data (
-        .out(dw),
+        .out(dwInter),
         .in0(ALU_out),
         .in1(data_mem_out),
         .sel(MemToReg)
