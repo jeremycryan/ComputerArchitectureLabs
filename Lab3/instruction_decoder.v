@@ -18,7 +18,8 @@ module instruction_decoder (
     output reg [2:0] ALUcntrl,
     output reg ALUsrc, 
     output reg jump,
-    output reg branch
+    output reg branch,
+    output reg bne
 
 );
 wire[5:0] op;
@@ -47,12 +48,17 @@ if((op==6'b000010)||(op==6'b000011)||(op==6'b0 && funct==6'b001000))
 else
     jump = 1'b1;
 
+// bne signal logic
+if(op==6'h5)
+    bne = 1'b1;
+else
+    bne = 1'b0;
 
 // ALusrc signal logic, ALUsrc is true on I type instructions
-if((op!==6'b0)&&(op!==6'b10)&&(op!==6'b11)&&((op<6'b010000) || (op >6'b010100)))
-    ALUsrc = 1'b1;
-else
+if((op!==6'b0)&&(op!==6'h4)&&(op!==6'h5)&&(op!==6'b10)&&(op!==6'b11)&&((op<6'b010000) || (op >6'b010100)))
     ALUsrc = 1'b0;
+else
+    ALUsrc = 1'b1;
 
 // memToReg is true if LW instruciton - op==100011
 if(op==6'b100011)

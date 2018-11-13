@@ -8,7 +8,7 @@ initial begin
     clk <= 0;
 end
 always begin
-#1000
+#10000
     clk <= ~clk;
 end
 
@@ -17,7 +17,7 @@ cpu myCPU(clk);
 initial begin
     $dumpfile("cpu.vcd");
     $dumpvars();
-    #100000
+    #500000
     $finish();
 end
 endmodule

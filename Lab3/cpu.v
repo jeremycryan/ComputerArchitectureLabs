@@ -21,8 +21,8 @@ wire[5:0] op;
 assign op = inst[31:26];
 
 instruction_memory instructy(clk,inst,{address,2'b00});
-ifu mr_ifu(address, ifu_target_instr,imm16,branch,jump,zero,clk);
-instruction_decoder enigma(inst,rs,rt,rd,imm16,target_instr,regDst,regWr,memWr,memToReg,ALUcntrl,ALUsrc,jump,branch);
+ifu mr_ifu(address, ifu_target_instr,imm16,branch,jump,zero,bne,clk);
+instruction_decoder enigma(inst,rs,rt,rd,imm16,target_instr,regDst,regWr,memWr,memToReg,ALUcntrl,ALUsrc,jump,branch,bne);
 datapath data(clk, rs, rt, rd, imm16, regWr, regDst, ALUsrc, ALUcntrl, memWr, memToReg,zero);
 
 always @(*)begin

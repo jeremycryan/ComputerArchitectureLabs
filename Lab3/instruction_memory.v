@@ -10,7 +10,7 @@ module instruction_memory
     parameter addresswidth  = 32,
     // limiting datamemory depth because otherwise icarus verilog
     // won't compile it
-    parameter depth         = 2**(26),
+    parameter depth         = 2**(20),
     parameter width         = 8 
 )(
     input 			clk,
@@ -22,7 +22,7 @@ module instruction_memory
     reg [width-1:0] memory [depth-1:0];
 
     initial begin
-        $readmemh("fib_0.mem", memory);
+        $readmemh("test_program_0.mem", memory);
     end
 
     assign dataOut = {memory[address], 

@@ -1,4 +1,5 @@
 `define AND and #30
+`define XOR xor #50
 //Instruction Fetch Unit which outputs an address
 //to Instruction Memory and is able to jump and
 //branch when provided appropriate control signals
@@ -8,7 +9,7 @@ module ifu
     output[29:0] address,
     input[25:0] targetInstr,
     input[15:0] imm16,
-    input branch,jump, zero, clk
+    input branch,jump, zero, bne, clk
 );
 
 reg[31:0] pc;
@@ -18,7 +19,7 @@ wire[31:0] sum;
 wire[31:0] concatenate;
 wire[31:0] pcNext;
 
-wire do_branch;
+wire do_branch, branch_condition;
 
 initial begin
     pc <= 32'b00000000000000000000000000000000;
@@ -26,7 +27,8 @@ end
 
 assign address = pc[29:0];
 signExtend1632 extend(immExtend,imm16);
-`AND branchy(do_branch,branch,zero);
+`XOR condition(branch_condition,zero,bne); // Takes care of BNE and BEQ
+`AND branchy(do_branch,branch,branch_condition); // Decides if to branch
 mux2_32 addMux(addend,32'b00000000000000000000000000000000,immExtend,do_branch);
 Adder32Bit adder(
     .sum(sum),
