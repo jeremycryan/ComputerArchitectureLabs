@@ -1,6 +1,8 @@
 # Lab 3 Report
 For this lab we designed and implimented a single cycle CPU in verilog using the MIPS instruction set. It can perform LW, SW, J, JR, JL, BEQ, BNE, XORI, ADDI, ADD, SUB, and SLT.
 
+## Code Reuse
+For this lab we reused various code segments from previous labs and homeworks. We reused our 2 choice 32 bit mux, 32 bit adder and 32 bit ALU from Lab 1. We reused Nathaniel's register file from Homework 4.
 
 ## Block Diagram
 ![](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab3/cpu_block_diagram.PNG)
