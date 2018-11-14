@@ -23,18 +23,19 @@ module instruction_decoder (
     output reg jl,
     output reg jr
 );
-wire[5:0] op;
-wire[4:0] shamt;
-wire[5:0] funct;
+
+wire[5:0] op;			// Instruction op code
+wire[4:0] shamt;		// Used with shift and rotate instructions
+wire[5:0] funct;		// Function code for R-types
 assign op = inst[31:26];
 assign shamt = inst[10:6];
 assign funct = inst[5:0];
 
-assign rs = inst[25:21];
-assign rt = inst[20:16];
-assign rd = inst[15:11];
-assign imm16 = inst[15:0];
-assign target_instr = inst[25:0];
+assign rs = inst[25:21];	// Register address 1 for R/I types
+assign rt = inst[20:16];	// Register address 2 for R/I types
+assign rd = inst[15:11];	// Register address 3 for R types
+assign imm16 = inst[15:0];	// 16-bit immediate for I types
+assign target_instr = inst[25:0]; // Target instruction for jump commands
 
 always @(*)begin
 // Branch signal logic
@@ -97,7 +98,6 @@ if((op==6'h23)||(op==6'h3)||(op==6'he)||(op==6'h8)||((op==6'h0)&&((funct==6'h20)
     regWr = 1'b1;
 else
     regWr = 1'b0;
-
 
 // Instruction is R type if op code is 0 or 16-20
 if ((op == 6'b000000) || (op[5:2] == 6'b0100))

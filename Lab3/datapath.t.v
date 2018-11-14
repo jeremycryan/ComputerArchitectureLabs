@@ -43,10 +43,4 @@ module datapath_test();
 
    //TODO implement test after decoder is done 
 
-
-
-
-
-
-
 endmodule

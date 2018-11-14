@@ -35,7 +35,6 @@ module datapath (
     // Initialize wires
     wire[4:0] reg_wr_addr, reg_wr_addr_inter;
     wire[31:0] da, db, dw, dwInter;
-
     assign jRrs = da;
 
     // Generate multiplexer for register write input

@@ -12,6 +12,7 @@ wire regDst, regWr, memWr, memToReg, ALUsrc, jump, branch;
 
 instruction_decoder decody(inst,rs,rt,rd,imm16,target_instr,regDst,regWr,memWr,memToReg,ALUcntrl,ALUsrc,jump,branch);
 
+// Test each command type
 initial begin
 $dumpfile("instruction_decoder.vcd");
 $dumpvars();
