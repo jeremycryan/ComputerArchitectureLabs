@@ -36,4 +36,3 @@ XOR Gate  |  50  | 1    |   50
 Registers |  130 |  32  |   4,160
 
 Total Cost: 24,400
-## Work Plan Reflection
