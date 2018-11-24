@@ -21,3 +21,7 @@ We used a button to load the preset parallel sequence, switch 0 to set the seria
 
 ### Final Report
 You can find [our Lab 2 report here.](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab2/report.md)
+
+## Lab 3
+
+You can find [our Lab 3 report here.](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab3/report.md)
