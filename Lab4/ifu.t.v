@@ -2,16 +2,17 @@
 
 module ifuTest();
 
-wire[29:0] subAddress; 		// Wire for instruction address, without two least significant bits
+wire[31:0] instruction;
 reg[25:0] targetInstr;		// Target instruction for J-type commands
 reg[15:0] imm16;		// 16-bit immediate for branch commands
-reg branch, jump;		// Flags for branches and jumps
+reg[31:0] jRrs;
+reg[31:0] pcStore_ex;
+reg branch, jump, ALUZero, bne, jl, jr, pc_en;		// Flags for branches and jumps
 reg clk;			// System clock
-wire[31:0] fullAddress;		// Full instruction address
-assign fullAddress = {subAddress,2'b00};
+wire[31:0] pcStore;
 
 // Instantiate instruction fetch unit
-ifu myIFU(subAddress, targetInstr, imm16, branch, jump, clk);
+ifu myIFU(instruction, pcStore, pcStore_ex, targetInstr, imm16, jRrs, branch, jump, ALUZero, bne, jl, jr, pc_en,clk);
 
 // Set up clock, and run at constant rate
 initial begin
@@ -34,6 +35,13 @@ initial begin
     assign branch = 1'b0;
     assign imm16 = 16'b0;
     assign targetInstr = 26'b0;
+    assign pcStore_ex = 32'b0;
+    assign jRrs = 32'b0;
+    assign ALUZero = 1'b0;
+    assign bne = 1'b0;
+    assign jl = 1'b0;
+    assign jr = 1'b0;
+    assign pc_en = 1'b1;
     #150000
 
     // Test Jump Instruction
@@ -46,16 +54,11 @@ initial begin
     // Test Branch with positive imm16
     assign branch = 1'b1;
     assign imm16 = 16'b11;
+    assign ALUZero = 1'b1; 
     #10000
     assign branch = 1'b0;
     #50000
 
-    // Test Branch with negative imm16
-    assign branch = 1'b1;
-    assign imm16 = 16'b1111111111111110;
-    #10000
-    assign branch = 1'b0;
-    #50000
     
     $finish();
 end
