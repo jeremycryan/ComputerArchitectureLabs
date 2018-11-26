@@ -18,11 +18,10 @@ module instruction_memory
     input [addresswidth-1:0]    address
 );
 
-
     reg [width-1:0] memory [depth-1:0];
 
     initial begin
-        $readmemh("test_program_1.mem", memory);
+        $readmemh("test_program_0.mem", memory);
     end
 
     assign dataOut = {memory[address], 

@@ -1,6 +1,5 @@
 `include "instruction_decoder.v"
 `include "regfile.v"
-`include "mux.v"
 
 module id(
 
@@ -179,7 +178,7 @@ module id(
     wire[31:0] mr_mux_2_out;
     mux2_32 mr_mux_2 (
         .out(mr_mux_2_out),
-        .in0(da),
+        .in0(db),
         .in1(ALUres_mem[31:0]),
         .sel(mem_met_b));
 

@@ -2,9 +2,7 @@
 `define XOR xor #50
 `define NOT not #10
 
-`include "sign_ext.v"
-`include "mux.v"
-`include "add.v"
+`include "instruction_memory.v"
 //Instruction Fetch Unit and Instruction Memory, Outputs an Instruction to
 //Instruction Decode 
 
@@ -12,6 +10,7 @@ module ifu
 (
     output[31:0] instruction,		// Instruction, goes to ID 
     output[31:0] pcStore,			// Program counter + 8, used for JAL command
+    output doing_branch_not,
     input[31:0] pcStore_ex,         // The value of pcStore propegated from the Exec reg wall
     input[25:0] targetInstr_ex,		// Target instruction for J-type commands
     input[15:0] imm16_ex,			// 16-bit immediate used for branch commands
@@ -31,6 +30,8 @@ wire[31:0] addendInter;			// Intermediate value of addend
 wire[31:0] jumpAddress;			// Address to jump to
 
 wire do_branch, branch_condition, carryIn;
+
+assign doing_branch_not = carryIn; // Forwards value outside IF
 
 // Initialize program counter at 0
 initial begin
@@ -67,5 +68,5 @@ always @(posedge clk)begin
         pc <= pcNext;
 end
 
-assign instruction = {address,2'b00};
+instruction_memory instr_mem(clk, instruction, {address,2'b00});
 endmodule
