@@ -18,12 +18,12 @@ id iddy(
     .wr_addr(5'h0),
     .wr_en(1'h0),
 
-    .da(),
-    .db(),
+    .da_out(),
+    .db_out(),
     .imm16(imm16),
 
     .rt(rt),
-    .rd(rd),
+    .wr_addr_id(rd),
     .target_instr(target_instr),
     .regDst(regDst),
     .regWr(regWr),

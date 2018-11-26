@@ -40,7 +40,7 @@ module id(
    // Any reads from the register should first check these values if they are
    // writing to the register we try to read from.
    input[37:0] ALUres_ex,
-      ALUres_mem;
+   input[37:0] ALUres_mem,
 
    // Clock
    input clk
@@ -54,6 +54,7 @@ module id(
 ////////////////////////////////////////////////////////////////
 
    wire[4:0] rs, rd;
+   wire[31:0] da, db;
 
    // Make decoder instance
    instruction_decoder dec (
@@ -145,7 +146,7 @@ module id(
         .out(mr_mux_1_out),
         .in0(mr_mux_0_out),
         .in1(ALUres_ex[31:0]),
-        .sel(ex_met_b));
+        .sel(ex_met_a));
 
 // -----------------------------------------------------------------------
 // DO THE SAME THING FOR REGISTER READ PORT 2
@@ -199,7 +200,8 @@ module id(
 // Calculate write address for register file
     genvar i;
     generate
-        mux2 muxxy (wr_addr_id[i], rt[i], rd[i], regDst);
+        for (i=0; i<5; i=i+1)
+            mux2 muxxy (wr_addr_id[i], rt[i], rd[i], regDst);
     endgenerate
 
 
