@@ -47,9 +47,30 @@ Except for in special cases, each instruction spends one clock cycle in each pha
 
 Each phase is separated by a group of positive edge-triggered D flip-flops that hold the state of control and data signals. This means that signals propogate through the pipeline with the corresponding data, going through one register each positive edge of the clock.
 
+## Testing
+#### Fibonacci Test
+To test a non-arbitrary program, we compiled an assembly test that computed the 8th digit of the fibonacci sequence with the first and second digit initalized. The assembly and gtkwave can be seen below. This was the first program we tested on our cpu. While there were no design errors with our cpu that this test caught, we did have to increase the clock period in order to give the ALU more time to settle on a value. This test used the following instructions: ADDI, ADD, BEQ, and J. This test demonstrates the stalling and flushing caused by BEQ.
+
+
+![](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab4/fib_test_assembly.png)
+![](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab4/fib_test_gtkwave.PNG)
+#### Jump Test Program
+This program was meant to test the various jump instructions within our instruction set. It revelealed that some of our flags related to these instructions were designed incorrectly. However, these errors were easy to fix. This program used the following instrucitons: ADDI, XORI, BNE, J, JL, and JR. This test demonstrates the stalling and flushing caused by BNE.
+
+
+![](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab4/jump_test_program_assembly.PNG)
+![](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab4/jump_test_program.PNG)
+#### Test Program 1
+This program was meant to test all the instructions the previous tests did not. It tested the following instructions: XORI, SUB, SLT, SW, and LW. It specifically tests the stalling caused by LW.
+
+
+![](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab4/test_program_assembly.PNG)
+![](https://github.com/jeremycryan/ComputerArchitectureLabs/blob/master/Lab4/test_program_gtkwave.PNG)
+
 ## Areas For Improvement
 
 - The speed could be improved by adding hardware to detect and act on jumps earlier in the pipeline.
 - The execution time of branch statements could be further reduced with more intelligent branch prediction.
 - There are several places where hardware use could be reduced. For instance, we have extra registers that hold control signals later in the pipeline than they are used.
 - The instruction set is still a pretty small subset of MIPS, and could be expanded.
+
