@@ -28,7 +28,7 @@ initial begin
     $dumpvars();
 
     // Run for a while
-    #500000
+    #2000000
     $finish();
 end
 endmodule

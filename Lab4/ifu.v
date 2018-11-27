@@ -9,7 +9,8 @@
 module ifu
 (
     output[31:0] instruction,		// Instruction, goes to ID 
-    output[31:0] pcStore,			// Program counter + 8, used for JAL command
+    output[31:0] pcStore,			// Program counter + 4, used for Branch command
+    output[31:0] pcStore_8,         // PC+8, for Jump and Link
     output doing_branch_not,
     input[31:0] pcStore_ex,         // The value of pcStore propegated from the Exec reg wall
     input[25:0] targetInstr_ex,		// Target instruction for J-type commands
@@ -26,7 +27,6 @@ wire[31:0] addend;				// Item being added to PC output --- used in branches
 wire[31:0] sum;					// Output of adder
 wire[31:0] concatenate;			// Used with sign-extended immediate
 wire[31:0] pcNext;				// Next value of program counter
-wire[31:0] addendInter;			// Intermediate value of addend
 wire[31:0] jumpAddress;			// Address to jump to
 
 wire do_branch, branch_condition, carryIn;
@@ -45,9 +45,8 @@ signExtend1632 extend(immExtend,imm16_ex);
 `XOR condition(branch_condition,ALUZero_ex,bne_ex); 	// Takes care of BNE and BEQ
 `AND branchy(do_branch,branch_ex,branch_condition);// Decides if to branch
 `NOT noty(carryIn, do_branch);              // Carryin for adder = 1 if not branching, =0 if branching
-mux2_32 addMux1(addendInter,32'b0,immExtend,do_branch);
-mux2_32 addMux2(addend,addendInter,32'b1,jl_ex);
-mux2_32 pcEffectMux(pcEffect,pc,pcStore_ex,branch_ex);
+mux2_32 addMux1(addend,32'b0,immExtend,do_branch);
+mux2_32 pcEffectMux(pcEffect,pc,pcStore_ex,do_branch);
 
 // Add 4 to program counter every tick; add more on branch commands
 Adder32Bit adder(
@@ -56,6 +55,14 @@ Adder32Bit adder(
     .a(pcEffect),
     .b(addend),
     .carryin(carryIn)
+);
+
+Adder32Bit adderPCStore8(
+    .sum(pcStore_8),
+    .carryout(),
+    .a(pc),
+    .b(32'b10),
+    .carryin(1'b0)
 );
 
 assign concatenate = {pcEffect[31:28],targetInstr_ex};

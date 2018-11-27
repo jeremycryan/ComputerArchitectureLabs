@@ -15,7 +15,8 @@ module id(
    output[31:0] da_out,
    output[31:0] db_out,
    output[15:0] imm16,
-   output[4:0] wr_addr_id, // not to be confused with wr_addr, this is for outgoing controls
+   output reg[4:0] wr_addr_id, // not to be confused with wr_addr, this is for outgoing controls
+   output[4:0] rs,
    output[4:0] rt,
    output[25:0] target_instr,
 
@@ -52,9 +53,8 @@ module id(
 // ----------------- INSTRUCTION DECODE ----------------------//
 ////////////////////////////////////////////////////////////////
 
-   wire[4:0] rs, rd;
+   wire[4:0] rd;
    wire[31:0] da, db;
-
    // Make decoder instance
    instruction_decoder dec (
 
@@ -85,10 +85,11 @@ module id(
 ///////////////////////////////////////////////////////////////
 
     // Initialize wires
-    wire[4:0] reg_wr_addr_inter;
     wire[31:0] dwInter;
     wire[31:0] jRrs;
     assign jRrs = da;
+    
+
 
     // Create register
     regfile reggie (
@@ -195,12 +196,20 @@ module id(
     assign db_out = mr_mux_3_out;
 
 // -----------------------------------------------------------------
+   wire[4:0] wr_addr_id_inter;
+
+    always @(*) begin
+    if(jl)
+        wr_addr_id = 5'b11111;
+    else
+        wr_addr_id = wr_addr_id_inter;
+    end
 
 // Calculate write address for register file
     genvar i;
     generate
         for (i=0; i<5; i=i+1)
-            mux2 muxxy (wr_addr_id[i], rt[i], rd[i], regDst);
+            mux2 muxxy (wr_addr_id_inter[i], rt[i], rd[i], regDst);
     endgenerate
 
 
