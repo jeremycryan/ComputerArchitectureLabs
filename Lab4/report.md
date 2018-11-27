@@ -1,4 +1,4 @@
-# Lab 3 Report
+# Lab 4 Report
 For this lab, we designed and implemented a pipeline CPU based on the single-cycle CPU we made for Lab 3. It has the same instruction set, with some changes to timing to account for the pipeline structure.
 
 ## Instructions and Timing
